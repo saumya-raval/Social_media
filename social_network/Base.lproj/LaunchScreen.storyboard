@@ -21,29 +21,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wwq-Bd-6GL">
-                                <rect key="frame" x="87" y="234" width="200" height="200"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="social_6-512" translatesAutoresizingMaskIntoConstraints="NO" id="jxO-nm-IYg">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="160"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Social Media" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx8-XQ-jU7">
-                                        <rect key="frame" x="0.0" y="170" width="200" height="30"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="social_6-512" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-Vr-wQB">
+                                <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="BZX-L8-k8W"/>
-                                    <constraint firstAttribute="height" constant="200" id="IYu-kc-7wR"/>
+                                    <constraint firstAttribute="width" constant="150" id="Mzr-30-em7"/>
+                                    <constraint firstAttribute="height" constant="150" id="pb2-Eo-0r8"/>
                                 </constraints>
-                            </stackView>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wwq-Bd-6GL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kTt-1P-zLO"/>
-                            <constraint firstItem="Wwq-Bd-6GL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qhD-yl-Ejd"/>
+                            <constraint firstItem="fvK-Vr-wQB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MbZ-sf-bxo"/>
+                            <constraint firstItem="fvK-Vr-wQB" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="YEz-wz-0iB"/>
                         </constraints>
                     </view>
                 </viewController>
