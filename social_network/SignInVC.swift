@@ -34,7 +34,8 @@ class SignIn: UIViewController {
                 if error == nil {
                     print("SAUMYA: User successfully signed in with email")
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -43,7 +44,8 @@ class SignIn: UIViewController {
                         } else {
                             print("SAUMYA: User created successfully with email")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -51,7 +53,9 @@ class SignIn: UIViewController {
             })
         }
     }
-    
+ 
+//    This function is used for Facebook auth only
+//
 //    func firebaseAuth(_ credentials: FIRAuthCredential) {
 //        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
 //            if error != nil {
@@ -62,7 +66,8 @@ class SignIn: UIViewController {
 //        })
 //    }
     	
-    func completeSignIn(id: String){
+    func completeSignIn(id: String, userData: Dictionary<String, String>){
+        DataServices.ds.createFirebaseUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Successfully saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "FeedVC", sender: nil)

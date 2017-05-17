@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4755087C2BBD8E2FD9AD78B7 /* Pods_social_network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABC866835DE74325BBF21F8 /* Pods_social_network.framework */; };
 		B83F03571ECC156C00A1B8FF /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83F03561ECC156C00A1B8FF /* FeedTableViewCell.swift */; };
+		B880C5971ECD000A00554F35 /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5961ECD000A00554F35 /* DataServices.swift */; };
 		B88EB6251ECA558C0042767B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B88EB6241ECA558C0042767B /* GoogleService-Info.plist */; };
 		B88EB6281ECA5F090042767B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EB6271ECA5F090042767B /* Constants.swift */; };
 		B88EB62A1ECA60290042767B /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EB6291ECA60290042767B /* ShadowView.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		109C017C311214B11615DD0C /* Pods-social_network.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-social_network.release.xcconfig"; path = "Pods/Target Support Files/Pods-social_network/Pods-social_network.release.xcconfig"; sourceTree = "<group>"; };
 		B83F03561ECC156C00A1B8FF /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		B880C5961ECD000A00554F35 /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 		B88EB6241ECA558C0042767B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B88EB6271ECA5F090042767B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B88EB6291ECA60290042767B /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B880C5951ECCFFE100554F35 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B880C5961ECD000A00554F35 /* DataServices.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		B88EB6261ECA5EEE0042767B /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				B88EB6331ECAB6960042767B /* social_network.entitlements */,
+				B880C5951ECCFFE100554F35 /* Services */,
 				B88EB6261ECA5EEE0042767B /* Util */,
 				B89146B01EB9935C0002612E /* Model */,
 				B89146B11EB993630002612E /* View */,
@@ -284,6 +295,7 @@
 				B89146A11EB993310002612E /* SignInVC.swift in Sources */,
 				B88EB6321ECA6EAA0042767B /* ImageViewShadow.swift in Sources */,
 				B891469F1EB993310002612E /* AppDelegate.swift in Sources */,
+				B880C5971ECD000A00554F35 /* DataServices.swift in Sources */,
 				B88EB62C1ECA66210042767B /* RoundBtn.swift in Sources */,
 				B88EB6281ECA5F090042767B /* Constants.swift in Sources */,
 				B88EB6301ECA6DD60042767B /* RoundEdgeBtn.swift in Sources */,
