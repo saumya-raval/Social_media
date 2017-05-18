@@ -39,5 +39,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App needs access to your photos to select a profile image.</string>
 </dict>
 </plist>

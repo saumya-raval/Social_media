@@ -177,7 +177,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="frR-RO-tGt">
                                 <rect key="frame" x="10" y="63" width="355" height="55"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJC-qP-AuX" customClass="RoundEdgeBtn" customModule="social_network" customModuleProvider="target">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJC-qP-AuX" customClass="RoundEdgeBtn" customModule="social_network" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="5RK-SP-nUL"/>
@@ -340,6 +340,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addImage" destination="XJC-qP-AuX" id="kiY-AQ-Fgu"/>
                         <outlet property="captionField" destination="Mqa-pi-gRF" id="nGc-es-6Zo"/>
                         <outlet property="tableView" destination="rP1-jb-AgG" id="gFz-RZ-NA9"/>
                     </connections>

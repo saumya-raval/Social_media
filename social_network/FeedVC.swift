@@ -10,17 +10,23 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var addImage: RoundEdgeBtn!
     @IBOutlet weak var captionField: CustomTextField!
     @IBOutlet weak var tableView: UITableView!
     
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,6 +45,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             self.tableView.reloadData()
         })
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            addImage.setImage(image, for: .normal)
+        } else {
+            print("SAUMYA: Failed to select valid iamge")
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,7 +78,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
 
-
     @IBAction func signOutTapped(_ sender: Any) {
         let result = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("SAUMYA: Keychain item removed succesfully \(result)")
@@ -76,6 +90,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func cameraBtnClicked(_ sender: Any) {
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func postBtnClicked(_ sender: Any) {
