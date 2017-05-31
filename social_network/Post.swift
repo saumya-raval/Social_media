@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Post {
     
@@ -14,6 +15,7 @@ class Post {
     private var _likes: Int!
     private var _imageURL: String!
     private var _postID: String!
+    private var _postRef: FIRDatabaseReference!
     
     var caption: String {
         return _caption
@@ -42,6 +44,17 @@ class Post {
         self._caption = postDict["caption"] as? String
         self._imageURL = postDict["imageURL"] as? String
         self._likes = postDict["likes"] as? Int
+        
+        _postRef = DataServices.ds.REF_POSTS.child(_postID)
+    }
+    
+    func adjustLikes(addLikes: Bool) {
+        if addLikes {
+            _likes = _likes + 1
+        } else {
+            _likes = _likes - 1
+        }
+        _postRef.child("likes").setValue(_likes)
     }
 
 }

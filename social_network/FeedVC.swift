@@ -9,15 +9,14 @@
 import UIKit
 import SwiftKeychainWrapper
 import Firebase
+import Foundation
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    @IBOutlet weak var addImage: RoundEdgeBtn!
-    @IBOutlet weak var captionField: CustomTextField!
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     @IBOutlet weak var tableView: UITableView!
     
     var posts = [Post]()
-    var imagePicker: UIImagePickerController!
+    
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
 
     override func viewDidLoad() {
@@ -25,14 +24,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 
         // Do any additional setup after loading the view.
         
-        imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
-        
         tableView.dataSource = self
         tableView.delegate = self
         
         DataServices.ds.REF_POSTS.observe(.value, with: { (snapshot) in
+            
+            self.posts = []
             
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
@@ -40,21 +37,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let post = Post(postID: key, postDict: postDict)
-                        self.posts.append(post)
+                        self.posts.insert(post, at: 0)
                     }
                 }
             }
             self.tableView.reloadData()
         })
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
-            addImage.setImage(image, for: .normal)
-        } else {
-            print("SAUMYA: Failed to select valid iamge")
-        }
-        dismiss(animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,16 +62,20 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             
             if let img = FeedVC.imageCache.object(forKey: post.imageURL as NSString) {
                 cell.configureCell(post: post, img: img)
-                return cell
             } else {
                 cell.configureCell(post: post)
-                return cell
             }
+            return cell
         } else {
             return FeedTableViewCell()
         }
         
     }
+    
+    @IBAction func newPostTapped(_ sender: Any) {
+        performSegue(withIdentifier: "NewPostVC", sender: nil)
+    }
+    
 
     @IBAction func signOutTapped(_ sender: Any) {
         let result = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
@@ -95,15 +87,5 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
         performSegue(withIdentifier: "SignOut", sender: nil)
     }
-    
-    @IBAction func cameraBtnClicked(_ sender: Any) {
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @IBAction func postBtnClicked(_ sender: Any) {
-    }
-    
-
-
     
 }
